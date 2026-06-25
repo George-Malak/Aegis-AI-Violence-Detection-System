@@ -1,0 +1,34 @@
+Aegis-AI-Violence-Detection-System/
+│
+├── .gitignore               # بيمنع رفع الـ Local envs، الـ node_modules، وأي أوزان/داتا
+├── README.md                # دليل تشغيل الـ Local (الباك والفرونت) والـ Online (كولاب)
+├── LICENSE                  # رخصة المشروع
+│
+├── frontend/                # [شغل LOCAL] كود واجهة المستخدم
+│   ├── app/                 # المكونات والصفحات (Components & Pages)
+│   ├── public/              # الصور والـ Assets الثابتة للـ UI
+│   └── package.json         # ملف الـ Dependencies الخاص بالفرونت آند
+│
+├── backend/                 # [شغل LOCAL] سيرفر الـ API والـ Logic
+│   ├── api/                 # الـ Endpoints (مثلاً استقبال الفيديو من الفرونت)
+│   ├── core/                # الإعدادات الرئيسية وحماية الـ Routes
+│   ├── services/            # الخدمات المساعدة (خزن في الداتا بيز، استدعي الـ Inference)
+│   ├── requirements.txt     # ملف مكتبات البايثون للباك آند (تعديل الـ Typo)
+│   └── Dockerfile           # ملف الدوكر لتشغيل السيرفر محلياً (تعديل الاسم)
+│
+├── ml_core/                 # [شغل ONLINE / COLAB] نواة الذكاء الاصطناعي
+│   ├── configs/             # ملفات الـ Hyperparameters وإعدادات التدريب (YAML/JSON)
+│   ├── src/                 # كود الموديل الأساسي (Custom Layers, Data Loaders, Architecture)
+│   │   ├── models.py
+│   │   └── dataset.py
+│   └── inference/           # كود التوقع اللي الباك آند هيستخدمه لما الموديل يجهز
+│       └── predict.py
+│
+├── notebooks/               # [شغل ONLINE] ملفات الـ Jupyter Notebooks الخاصة بجوجل كولاب
+│   ├── 01_data_preprocessing.ipynb  # سكربت الكولاب لتجهيز وتنظيف الداتا من درايف
+│   ├── 02_model_training.ipynb     # سكربت الكولاب لتدريب الموديل وحفظ الأوزان في درايف
+│   └── 03_model_evaluation.ipynb   # سكربت الكولاب لعمل تيتست وحساب الـ Metrics
+│
+└── scripts/                 # [أدوات مساعدة] لتسهيل الربط بين الكل
+    ├── download_weights.py  # سكربت (يستخدمه الباك آند محلياً) لتحميل أحدث وزن جاهز من درايف
+    └── setup.sh             # سكربت سريع لتجهيز البيئة المحلية بـ أمر واحد
