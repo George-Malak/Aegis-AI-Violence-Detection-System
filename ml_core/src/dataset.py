@@ -1,50 +1,79 @@
 import cv2
 import numpy as np
+import os
 
-def preprocess_video(video_path, target_fps=10, target_size=(224, 224)):
+def preprocess_video(video_path, target_frames=16, target_size=(224, 224)):
+    
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        print("Error opening video stream or file")
+        print(f"Error: Cannot open video {video_path}")
         return None
 
-    original_fps = cap.get(cv2.CAP_PROP_FPS)
-    # Calculate how many frames to skip to hit target FPS
-    frame_interval = max(1, int(original_fps / target_fps))
-    frames = []
-    optical_flows = []
-    prev_gray = None
-    count = 0
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    if total_frames == 0:
+        cap.release()
+        return None
+
+    # Temporal Sampling Indices
+    indices = np.linspace(0, total_frames - 1, num=target_frames, dtype=int)
+    
+    # Initialize CLAHE (Contrast Limited Adaptive Histogram Equalization) for CCTV enhancement
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    
+    video_sequence = []
+    current_frame_idx = 0
+    
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             break
-        
-        # Frame Extraction (Skip frames to match target FPS)
-        if count % frame_interval == 0:
-            # Spatial Reduction (Resize)
-            resized_frame = cv2.resize(frame, target_size, interpolation=cv2.INTER_AREA)
-            frames.append(resized_frame)
             
-            # Temporal Processing (Optical Flow)
-            gray = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2GRAY)
-            if prev_gray is not None:
-                # Calculate Dense Optical Flow
+        if current_frame_idx in indices:
+            # Handle multiple indices matches (padding for ultra-short clips)
+            occurrences = np.sum(indices == current_frame_idx)
+            for _ in range(occurrences):
                 
-                flow = cv2.calcOpticalFlowFarneback(prev_gray, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
-                # Calculate the magnitude of the velocity vectors
-                magnitude, angle = cv2.cartToPolar(flow[..., 0], flow[..., 1])
+                # SPATIAL PROCESSING & ASPECT RATIO
+                # Letterbox/Resize preserving aspect ratio to avoid squishing human figures
+                h, w = frame.shape[:2]
+                t_w, t_h = target_size
+                scale = min(t_w / w, t_h / h)
+                nw, nh = int(w * scale), int(h * scale)
+                
+                resized = cv2.resize(frame, (nw, nh), interpolation=cv2.INTER_AREA)
+                
+                # Create canvas and paste the resized image in the center
+                canvas = np.zeros((t_h, t_w, 3), dtype=np.uint8)
+                dx, dy = (t_w - nw) // 2, (t_h - nh) // 2
+                canvas[dy:dy+nh, dx:dx+nw] = resized
+                
+                # QUALITY & CONTRAST ENHANCEMENT
+                # Convert to YCrCb to enhance luminosity channel without messing up colors
+                ycrcb = cv2.cvtColor(canvas, cv2.COLOR_BGR2YCrCb)
+                ycrcb[:, :, 0] = clahe.apply(ycrcb[:, :, 0])
+                enhanced = cv2.cvtColor(ycrcb, cv2.COLOR_YCrCb2RGB) # Switch to RGB for Deep Learning
+                
+                # Mild Bilateral Filter: Denoises low-quality video but *keeps sharp edges* of moving bodies
+                filtered = cv2.bilateralFilter(enhanced, d=5, sigmaColor=35, sigmaSpace=35)
+                
+                # --- C. NORMALIZATION ---
+                normalized = filtered.astype(np.float32) / 255.0
+                video_sequence.append(normalized)
+                
+        current_frame_idx += 1
+        if len(video_sequence) >= target_frames:
+            break
 
-                # To ignore any movement that is too weak
-                motion_threshold = 1 # i belive it is not the best but 1.5 and .5 are not good at all
-                flow[magnitude < motion_threshold] = 0
-                # Normalize flow to make it an "image-like" structure if needed for CNN input
-                # or just append the raw (x, y) displacement vectors
-                optical_flows.append(flow)
-                
-            prev_gray = gray
-        count += 1
     cap.release()
-    return np.array(frames), np.array(optical_flows)
-
-# Example Usage:
-video_frames, motion_features = preprocess_video(r"D:\downloads\Movies\Robbery150_x264.mp4")
+    
+    # Ensure we strictly return the expected shape
+    video_tensor = np.array(video_sequence)[:target_frames]
+    return video_tensor
+"""
+# Quick Verification
+if __name__ == "__main__":
+    sample_path = r"D:\downloads\Movies\Robbery150_x264.mp4"
+    if os.path.exists(sample_path):
+        tensor = preprocess_video_ultimate(sample_path, target_frames=16, target_size=(224, 224))
+        print(f"Tensor shape: {tensor.shape}")
+"""
