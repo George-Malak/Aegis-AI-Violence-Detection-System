@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profile - Agesis AI</title>
+        <link rel="stylesheet" href="../assets/css/variables.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/navbar.css" />
+        <link rel="stylesheet" href="../assets/css/forms.css" />
+    </head>
+    <body data-page="profile">
+        <div class="app-layout">
+            <!-- Sidebar Component -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <a href="#" class="sidebar-brand">Agesis <span>AI</span></a>
+                </div>
+                <nav class="sidebar-nav">
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-title">Monitoring</div>
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.48 8.59a.75.75 0 00-1.06 1.06l3.25 3.25a.75.75 0 001.06 0l3.25-3.25a.75.75 0 10-1.06-1.06l-2.77 2.77V2.75z" />
+                                <path
+                                    d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                            </svg>
+                            Dashboard
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M4.25 3A2.25 2.25 0 002 5.25v1.5A2.25 2.25 0 004.25 9h1.5A2.25 2.25 0 008 6.75v-1.5A2.25 2.25 0 005.75 3h-1.5zM4.25 11A2.25 2.25 0 002 13.25v1.5A2.25 2.25 0 004.25 17h1.5A2.25 2.25 0 008 14.75v-1.5A2.25 2.25 0 005.75 11h-1.5zM11 5.25A2.25 2.25 0 0113.25 3h1.5A2.25 2.25 0 0117 5.25v1.5A2.25 2.25 0 0114.75 9h-1.5A2.25 2.25 0 0111 6.75v-1.5zM13.25 11A2.25 2.25 0 0011 13.25v1.5A2.25 2.25 0 0013.25 17h1.5A2.25 2.25 0 0017 14.75v-1.5A2.25 2.25 0 0014.75 11h-1.5z" />
+                            </svg>
+                            Cameras
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 2a6 6 0 00-6 6c0 3.163-.457 4.96-1.732 6.36a.75.75 0 00.518 1.26H7.5a2.5 2.5 0 005 0h4.714a.75.75 0 00.518-1.26C16.457 12.96 16 11.163 16 8a6 6 0 00-6-6zM9 16.5a1.5 1.5 0 003 0H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Alerts
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M15.5 2A1.5 1.5 0 0014 3.5v13a1.5 1.5 0 001.5 1.5h1a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0016.5 2h-1zM9.5 6A1.5 1.5 0 008 7.5v9A1.5 1.5 0 009.5 18h1a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 6h-1zM3.5 10A1.5 1.5 0 002 11.5v5A1.5 1.5 0 003.5 18h1A1.5 1.5 0 006 16.5v-5A1.5 1.5 0 004.5 10h-1z" />
+                            </svg>
+                            Analytics
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-title">System</div>
+                        <a href="profile.html" class="sidebar-link active">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.995 6.995 0 011.372.793l1.61-.495a1 1 0 011.19.494l1.18 2.043a1 1 0 01-.207 1.254l-1.268 1.113a7.038 7.038 0 010 1.586l1.268 1.113a1 1 0 01.206 1.254l-1.18 2.043a1 1 0 01-1.19.494l-1.61-.495a6.995 6.995 0 01-1.372.793l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.995 6.995 0 01-1.372-.793l-1.61.495a1 1 0 01-1.19-.494l-1.179-2.043a1 1 0 01.206-1.254l1.268-1.113a7.038 7.038 0 010-1.586L4.364 7.9a1 1 0 01-.206-1.254l1.18-2.043a1 1 0 011.19-.494l1.61.495a6.995 6.995 0 011.372-.793l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Settings
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="app-main">
+                <!-- Top Navbar Component -->
+                <nav class="navbar">
+                    <div class="navbar-left">
+                        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                        <div class="breadcrumb">
+                            <a href="dashboard.html" class="breadcrumb-item">Dashboard</a>
+                            <span class="breadcrumb-separator">/</span>
+                            <span class="breadcrumb-current">Settings</span>
+                        </div>
+                    </div>
+                    <div class="navbar-right">
+                        <button class="navbar-action" aria-label="Notifications">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 2a6 6 0 00-6 6c0 3.163-.457 4.96-1.732 6.36a.75.75 0 00.518 1.26H7.5a2.5 2.5 0 005 0h4.714a.75.75 0 00.518-1.26C16.457 12.96 16 11.163 16 8a6 6 0 00-6-6zM9 16.5a1.5 1.5 0 003 0H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="navbar-avatar" title="John Doe">JD</div>
+                    </div>
+                </nav>
+
+                <!-- Profile Content -->
+                <div class="app-content">
+                    <div class="profile-container">
+                        <!-- Page Header -->
+                        <div class="profile-header">
+                            <div>
+                                <h1 class="profile-title">Settings</h1>
+                                <p class="profile-subtitle">Manage your account details and preferences.</p>
+                            </div>
+                            <div style="display: flex; gap: var(--space-3)">
+                                <button class="btn btn-secondary">Cancel</button>
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+
+                        <!-- Profile Section -->
+                        <div class="profile-section">
+                            <div class="profile-section-header">
+                                <h3 class="profile-section-title">Profile Information</h3>
+                                <p class="profile-section-desc">
+                                    Update your personal details and role assignment.
+                                </p>
+                            </div>
+
+                            <div class="avatar-container">
+                                <div class="avatar" title="Upload photo">
+                                    JD
+                                    <div class="avatar-overlay">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="white"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path
+                                                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                            <circle cx="12" cy="13" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="avatar-info">
+                                    <h4>Profile Photo</h4>
+                                    <p>JPG, GIF or PNG. 1MB max.</p>
+                                </div>
+                            </div>
+
+                            <form>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="first-name" class="form-label">First Name</label>
+                                        <input type="text" id="first-name" class="form-input" value="John" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name" class="form-label">Last Name</label>
+                                        <input type="text" id="last-name" class="form-input" value="Doe" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            class="form-input"
+                                            value="john@agesis.ai" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            class="form-input"
+                                            value="+1 (555) 012-3456" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="role" class="form-label">Role</label>
+                                        <input
+                                            type="text"
+                                            id="role"
+                                            class="form-input"
+                                            value="Security Administrator"
+                                            disabled
+                                            style="
+                                                background-color: var(--color-hover);
+                                                cursor: not-allowed;
+                                            " />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="org" class="form-label">Organization</label>
+                                        <input
+                                            type="text"
+                                            id="org"
+                                            class="form-input"
+                                            value="Global Secure Corp"
+                                            disabled
+                                            style="
+                                                background-color: var(--color-hover);
+                                                cursor: not-allowed;
+                                            " />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Security Section -->
+                        <div class="profile-section">
+                            <div class="profile-section-header">
+                                <h3 class="profile-section-title">Security</h3>
+                                <p class="profile-section-desc">
+                                    Ensure your account is using a long, random password to stay secure.
+                                </p>
+                            </div>
+
+                            <form>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="current-password" class="form-label"
+                                            >Current Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            id="current-password"
+                                            class="form-input"
+                                            placeholder="Enter current password" />
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: flex-end;
+                                            padding-bottom: var(--space-5);
+                                        ">
+                                        <a href="#" class="form-link" style="white-space: nowrap"
+                                            >Forgot password?</a
+                                        >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new-password" class="form-label">New Password</label>
+                                        <input
+                                            type="password"
+                                            id="new-password"
+                                            class="form-input"
+                                            placeholder="Enter new password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm-password" class="form-label"
+                                            >Confirm Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            id="confirm-password"
+                                            class="form-input"
+                                            placeholder="Confirm new password" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Notifications Section -->
+                        <div class="profile-section">
+                            <div class="profile-section-header">
+                                <h3 class="profile-section-title">Notification Preferences</h3>
+                                <p class="profile-section-desc">
+                                    Configure how and when you want to be notified of security events.
+                                </p>
+                            </div>
+
+                            <div class="toggle-group">
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <div class="toggle-label">Critical Security Alerts</div>
+                                        <p class="toggle-desc">
+                                            Get notified about fire, weapons, and severe threats.
+                                        </p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <div class="toggle-label">Suspicious Activity Warnings</div>
+                                        <p class="toggle-desc">
+                                            Receive alerts for loitering and unauthorized access attempts.
+                                        </p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <div class="toggle-label">System Status Updates</div>
+                                        <p class="toggle-desc">
+                                            Notifications about camera outages and server maintenance.
+                                        </p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <div class="toggle-label">Weekly Security Digest</div>
+                                        <p class="toggle-desc">
+                                            A summary of all activities sent to your email every Monday.
+                                        </p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Section -->
+                        <div class="profile-section">
+                            <div class="profile-section-header">
+                                <h3 class="profile-section-title">Recent Activity</h3>
+                                <p class="profile-section-desc">Your recent login and security events.</p>
+                            </div>
+
+                            <ul class="activity-list">
+                                <li class="activity-item">
+                                    <svg
+                                        class="activity-icon"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                                        <polyline points="10 17 15 12 10 7" />
+                                        <line x1="15" y1="12" x2="3" y2="12" />
+                                    </svg>
+                                    <span>Logged in from Chrome on Windows</span>
+                                    <span class="activity-time">2 hours ago</span>
+                                </li>
+                                <li class="activity-item">
+                                    <svg
+                                        class="activity-icon"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                    </svg>
+                                    <span>Updated notification preferences</span>
+                                    <span class="activity-time">Yesterday</span>
+                                </li>
+                                <li class="activity-item">
+                                    <svg
+                                        class="activity-icon"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                    <span>Password changed successfully</span>
+                                    <span class="activity-time">3 days ago</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Component -->
+                <footer class="footer">
+                    <div>&copy; 2023 Agesis AI. All rights reserved.</div>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+                </footer>
+            </main>
+        </div>
+
+        <!-- Core Scripts -->
+        <script src="../assets/js/config.js"></script>
+        <script src="../assets/js/utils.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+        <!-- Page-Specific Scripts -->
+        <script src="../assets/js/api.js"></script>
+        <script src="../assets/js/validation.js"></script>
+    </body>
+</html>

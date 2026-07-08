@@ -1,0 +1,135 @@
+/* ========================================
+   Agesis AI - Login Page Styles
+   ======================================== */
+
+.login-layout {
+    display: flex;
+    height: 100vh;
+    background-color: var(--color-surface);
+}
+
+/* Left Branding Panel */
+.login-panel-brand {
+    flex: 0 0 45%;
+    background-color: var(--color-primary-dark);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-12);
+    color: var(--color-text-inverse);
+    overflow: hidden;
+}
+
+.login-panel-brand::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+.login-brand-content {
+    position: relative;
+    z-index: 1;
+}
+
+.login-brand-logo {
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-10);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.login-brand-logo span {
+    color: var(--color-secondary-light);
+}
+
+.login-brand-headline {
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-tight);
+}
+
+.login-brand-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-body);
+    line-height: var(--leading-relaxed);
+    max-width: 400px;
+}
+
+/* Right Form Panel */
+.login-panel-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8);
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    margin-bottom: var(--space-8);
+}
+
+.login-title {
+    font-size: var(--text-h3);
+    margin-bottom: var(--space-2);
+}
+
+.login-subtitle {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    margin-bottom: 0;
+}
+
+/* Loading State */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .login-panel-brand {
+        flex: 0 0 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-panel-brand {
+        display: none;
+    }
+    .login-panel-form {
+        padding: var(--space-6);
+    }
+}

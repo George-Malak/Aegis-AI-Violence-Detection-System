@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard - Agesis AI</title>
+        <link rel="stylesheet" href="../assets/css/variables.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/navbar.css" />
+        <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    </head>
+    <body data-page="dashboard">
+        <div class="app-layout">
+            <!-- Sidebar Component -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <a href="#" class="sidebar-brand">Agesis <span>AI</span></a>
+                </div>
+                <nav class="sidebar-nav">
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-title">Monitoring</div>
+                        <a href="#" class="sidebar-link active">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.48 8.59a.75.75 0 00-1.06 1.06l3.25 3.25a.75.75 0 001.06 0l3.25-3.25a.75.75 0 10-1.06-1.06l-2.77 2.77V2.75z" />
+                                <path
+                                    d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                            </svg>
+                            Dashboard
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M4.25 3A2.25 2.25 0 002 5.25v1.5A2.25 2.25 0 004.25 9h1.5A2.25 2.25 0 008 6.75v-1.5A2.25 2.25 0 005.75 3h-1.5zM4.25 11A2.25 2.25 0 002 13.25v1.5A2.25 2.25 0 004.25 17h1.5A2.25 2.25 0 008 14.75v-1.5A2.25 2.25 0 005.75 11h-1.5zM11 5.25A2.25 2.25 0 0113.25 3h1.5A2.25 2.25 0 0117 5.25v1.5A2.25 2.25 0 0114.75 9h-1.5A2.25 2.25 0 0111 6.75v-1.5zM13.25 11A2.25 2.25 0 0011 13.25v1.5A2.25 2.25 0 0013.25 17h1.5A2.25 2.25 0 0017 14.75v-1.5A2.25 2.25 0 0014.75 11h-1.5z" />
+                            </svg>
+                            Cameras
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 2a6 6 0 00-6 6c0 3.163-.457 4.96-1.732 6.36a.75.75 0 00.518 1.26H7.5a2.5 2.5 0 005 0h4.714a.75.75 0 00.518-1.26C16.457 12.96 16 11.163 16 8a6 6 0 00-6-6zM9 16.5a1.5 1.5 0 003 0H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Alerts
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M15.5 2A1.5 1.5 0 0014 3.5v13a1.5 1.5 0 001.5 1.5h1a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0016.5 2h-1zM9.5 6A1.5 1.5 0 008 7.5v9A1.5 1.5 0 009.5 18h1a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 6h-1zM3.5 10A1.5 1.5 0 002 11.5v5A1.5 1.5 0 003.5 18h1A1.5 1.5 0 006 16.5v-5A1.5 1.5 0 004.5 10h-1z" />
+                            </svg>
+                            Analytics
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-title">System</div>
+                        <a href="#" class="sidebar-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.995 6.995 0 011.372.793l1.61-.495a1 1 0 011.19.494l1.18 2.043a1 1 0 01-.207 1.254l-1.268 1.113a7.038 7.038 0 010 1.586l1.268 1.113a1 1 0 01.206 1.254l-1.18 2.043a1 1 0 01-1.19.494l-1.61-.495a6.995 6.995 0 01-1.372.793l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.995 6.995 0 01-1.372-.793l-1.61.495a1 1 0 01-1.19-.494l-1.179-2.043a1 1 0 01.206-1.254l1.268-1.113a7.038 7.038 0 010-1.586L4.364 7.9a1 1 0 01-.206-1.254l1.18-2.043a1 1 0 011.19-.494l1.61.495a6.995 6.995 0 011.372-.793l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Settings
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="app-main">
+                <!-- Top Navbar Component -->
+                <nav class="navbar">
+                    <div class="navbar-left">
+                        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                        <div class="breadcrumb">
+                            <a href="#" class="breadcrumb-item">Dashboard</a>
+                            <span class="breadcrumb-separator">/</span>
+                            <span class="breadcrumb-current">Overview</span>
+                        </div>
+                    </div>
+                    <div class="navbar-right">
+                        <button class="navbar-action" aria-label="Notifications">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 2a6 6 0 00-6 6c0 3.163-.457 4.96-1.732 6.36a.75.75 0 00.518 1.26H7.5a2.5 2.5 0 005 0h4.714a.75.75 0 00.518-1.26C16.457 12.96 16 11.163 16 8a6 6 0 00-6-6zM9 16.5a1.5 1.5 0 003 0H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="notification-badge"></span>
+                        </button>
+                        <div class="navbar-avatar" title="John Doe">JD</div>
+                    </div>
+                </nav>
+
+                <!-- Dashboard Content -->
+                <div class="app-content">
+                    <!-- Statistics Row -->
+                    <div class="dashboard-row dashboard-stats">
+                        <div class="stat-card alerts">
+                            <div class="stat-header">
+                                <span class="stat-title">Today's Alerts</span>
+                                <svg
+                                    class="stat-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M10 2a6 6 0 00-6 6c0 3.163-.457 4.96-1.732 6.36a.75.75 0 00.518 1.26H7.5a2.5 2.5 0 005 0h4.714a.75.75 0 00.518-1.26C16.457 12.96 16 11.163 16 8a6 6 0 00-6-6zM9 16.5a1.5 1.5 0 003 0H9z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-change">+3 from yesterday</div>
+                        </div>
+                        <div class="stat-card accuracy">
+                            <div class="stat-header">
+                                <span class="stat-title">AI Accuracy</span>
+                                <svg
+                                    class="stat-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.48 8.59a.75.75 0 00-1.06 1.06l3.25 3.25a.75.75 0 001.06 0l3.25-3.25a.75.75 0 10-1.06-1.06l-2.77 2.77V2.75z" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">94.2%</div>
+                            <div class="stat-change">Model v2.1.4</div>
+                        </div>
+                        <div class="stat-card events">
+                            <div class="stat-header">
+                                <span class="stat-title">Events Today</span>
+                                <svg
+                                    class="stat-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.96 4.46a.75.75 0 00-.92-1.18l-1.25.94a.75.75 0 00.92 1.18l1.25-.94zm3.33 1.96a.75.75 0 01-.08 1.06l-4.17 3.52a.75.75 0 01-.92-1.18l4.17-3.52a.75.75 0 011.06.08l2.25 2.25a.75.75 0 01-.92 1.18l-1.94-1.64z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">247</div>
+                            <div class="stat-change">Since midnight</div>
+                        </div>
+                        <div class="stat-card cameras">
+                            <div class="stat-header">
+                                <span class="stat-title">Online Cameras</span>
+                                <svg
+                                    class="stat-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M4.25 3A2.25 2.25 0 002 5.25v1.5A2.25 2.25 0 004.25 9h1.5A2.25 2.25 0 008 6.75v-1.5A2.25 2.25 0 005.75 3h-1.5zM4.25 11A2.25 2.25 0 002 13.25v1.5A2.25 2.25 0 004.25 17h1.5A2.25 2.25 0 008 14.75v-1.5A2.25 2.25 0 005.75 11h-1.5zM11 5.25A2.25 2.25 0 0113.25 3h1.5A2.25 2.25 0 0117 5.25v1.5A2.25 2.25 0 0114.75 9h-1.5A2.25 2.25 0 0111 6.75v-1.5zM13.25 11A2.25 2.25 0 0011 13.25v1.5A2.25 2.25 0 0013.25 17h1.5A2.25 2.25 0 0017 14.75v-1.5A2.25 2.25 0 0014.75 11h-1.5z" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">32/34</div>
+                            <div class="stat-change">2 maintenance</div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Content: Table + Notifications -->
+                    <div class="dashboard-row dashboard-primary">
+                        <!-- Detection History Table -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 style="margin: 0; font-size: 16px">Detection History</h4>
+                                <input
+                                    type="text"
+                                    id="detection-search"
+                                    class="form-input"
+                                    placeholder="Filter events..."
+                                    style="max-width: 220px; height: 36px; font-size: 14px" />
+                            </div>
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Camera</th>
+                                            <th>Event</th>
+                                            <th>Confidence</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="detection-tbody">
+                                        <!-- Populated by dashboard.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Notifications + Quick Actions -->
+                        <div style="display: flex; flex-direction: column; gap: var(--space-6)">
+                            <!-- Recent Notifications -->
+                            <div class="card" style="flex: 1">
+                                <div class="card-header">
+                                    <h4 style="margin: 0; font-size: 16px">Recent Alerts</h4>
+                                </div>
+                                <div class="card-body" style="padding: var(--space-4)">
+                                    <div id="notification-feed" class="notification-feed">
+                                        <div class="notification-item unread">
+                                            <div class="notification-icon danger">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path
+                                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="notification-content">
+                                                <div class="notification-text">
+                                                    <b>Fire & Smoke</b> detected at Warehouse 3
+                                                </div>
+                                                <div class="notification-time">2 mins ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="notification-item">
+                                            <div class="notification-icon warning">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path
+                                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="notification-content">
+                                                <div class="notification-text">
+                                                    <b>Suspicious Activity</b> at Parking North
+                                                </div>
+                                                <div class="notification-time">14 mins ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="notification-item">
+                                            <div class="notification-icon info">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="notification-content">
+                                                <div class="notification-text">
+                                                    Camera "Main Gate" back online
+                                                </div>
+                                                <div class="notification-time">1 hour ago</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Actions -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 style="margin: 0; font-size: 16px">Quick Actions</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="quick-actions">
+                                        <button class="quick-action-btn">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                            </svg>
+                                            View Recordings
+                                        </button>
+                                        <button class="quick-action-btn">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="9" cy="7" r="4"></circle>
+                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                            </svg>
+                                            Manage Team
+                                        </button>
+                                        <button class="quick-action-btn">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                                <polyline points="14 2 14 8 20 8"></polyline>
+                                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                <polyline points="10 9 9 9 8 9"></polyline>
+                                            </svg>
+                                            Generate Report
+                                        </button>
+                                        <button class="quick-action-btn">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                                <path
+                                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                            </svg>
+                                            System Settings
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Status -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 style="margin-top: 0; margin-bottom: var(--space-4); font-size: 16px">
+                                        System Status
+                                    </h4>
+                                    <div class="status-indicator">
+                                        <span class="status-dot"></span> API Gateway: Operational
+                                    </div>
+                                    <div class="status-indicator">
+                                        <span class="status-dot"></span> AI Processing Cluster: Operational
+                                    </div>
+                                    <div class="status-indicator">
+                                        <span class="status-dot warning"></span> Storage Node 3: High Load
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Content: Cameras + Analytics -->
+                    <div class="dashboard-row dashboard-secondary">
+                        <!-- Camera Grid Placeholder -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 style="margin: 0; font-size: 16px">Live Camera Grid</h4>
+                                <span class="badge badge-success">4 Live</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="placeholder-box" style="min-height: 200px">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="48"
+                                        height="48"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                    </svg>
+                                    <span>Camera feeds will render here</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analytics Placeholder -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 style="margin: 0; font-size: 16px">Threat Analytics</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="placeholder-box" style="min-height: 200px">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="48"
+                                        height="48"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                    <span>Analytics charts will render here</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Component -->
+                <footer class="footer">
+                    <div>&copy; 2023 Agesis AI. All rights reserved.</div>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+                </footer>
+            </main>
+        </div>
+
+        <!-- Core Scripts -->
+        <script src="../assets/js/config.js"></script>
+        <script src="../assets/js/utils.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+        <!-- Page-Specific Scripts -->
+        <script src="../assets/js/api.js"></script>
+        <script src="../assets/js/dashboard.js"></script>
+    </body>
+</html>

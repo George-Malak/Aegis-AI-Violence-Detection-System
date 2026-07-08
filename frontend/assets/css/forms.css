@@ -1,0 +1,116 @@
+/* ========================================
+   Agesis AI - Form Components
+   ======================================== */
+
+.form-group {
+    margin-bottom: var(--space-5);
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-body);
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+    height: 44px;
+}
+
+.form-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    background-color: var(--color-surface);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-input.error {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger-light);
+}
+
+.form-input.error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-error {
+    display: none;
+    font-size: var(--text-caption);
+    color: var(--color-danger);
+    margin-top: var(--space-1);
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.form-error.visible {
+    display: flex;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.form-checkbox input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-secondary);
+    cursor: pointer;
+}
+
+.form-checkbox label {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.form-link {
+    font-size: var(--text-small);
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}
+
+/* Global Form Alert */
+.form-alert {
+    display: none;
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-danger-light);
+    border: 1px solid var(--color-danger);
+    border-radius: var(--radius-md);
+    color: var(--color-danger);
+    font-size: var(--text-small);
+    margin-bottom: var(--space-4);
+}
+
+.form-alert.visible {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
