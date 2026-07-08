@@ -55,6 +55,7 @@
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--space-4);
     line-height: var(--leading-tight);
+    color: var(--color-text-secondary);
 }
 
 .login-brand-text {
