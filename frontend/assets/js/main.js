@@ -7,6 +7,7 @@ const AgesisApp = {
         this.bindGlobalEvents();
         this.initMobileSidebar();
         this.initScrollAnimations();
+        this.initCopyrightYear();
         this.initPageScripts();
         console.log(`[Agesis AI] Application initialized in ${AgesisConfig.env} mode.`);
     },
@@ -89,6 +90,14 @@ const AgesisApp = {
                 // Future: AgesisProfile.init();
                 break;
         }
+    },
+
+    initCopyrightYear() {
+        const yearElements = document.querySelectorAll("#copyright-year");
+
+        yearElements.forEach((element) => {
+            element.textContent = new Date().getFullYear();
+        });
     },
 };
 
