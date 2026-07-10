@@ -11,6 +11,7 @@ class VideoPreprocessor:
         
         self.clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=tile_grid_size)
 
+    @staticmethod
     def visualize_frame_sequence(processed_tensor):
         """
             Plots the processed video tensor frames in a grid.
@@ -41,6 +42,7 @@ class VideoPreprocessor:
         plt.tight_layout()
         plt.show()
 
+    @staticmethod
     def plot_pixel_distribution(processed_tensor):
         """
             Plots a histogram showing the distribution of pixel values across all frames.
@@ -63,6 +65,7 @@ class VideoPreprocessor:
         plt.grid(True, linestyle='--', alpha=0.6)
         plt.show()
 
+    @staticmethod
     def plot_motion_energy(processed_tensor):
         """
         Calculates and plots the mathematical motion energy between frames.
@@ -99,6 +102,7 @@ class VideoPreprocessor:
         plt.show()
 
     #for testing purposes, we can visualize the processed video tensor
+    @staticmethod
     def play_processed_video_with_motion_tracking(processed_tensor, fps=8):
         print("\nPress 'q' in the pop-up video window to stop playback.")
         num_frames = processed_tensor.shape[0]
@@ -216,9 +220,9 @@ class VideoPreprocessor:
         
         # Ensure we strictly return the expected shape
         video_tensor = np.array(video_sequence)[:self.target_frames]
-        visualize_frame_sequence(video_tensor)  # Visualize the processed frames
-        plot_pixel_distribution(video_tensor)  # Show pixel distribution for debugging
-        plot_motion_energy(video_tensor)  # Show motion energy for debugging
+        self.visualize_frame_sequence(video_tensor)  # Visualize the processed frames
+        self.plot_pixel_distribution(video_tensor)  # Show pixel distribution for debugging
+        self.plot_motion_energy(video_tensor)  # Show motion energy for debugging
         return video_tensor
 
 """"
