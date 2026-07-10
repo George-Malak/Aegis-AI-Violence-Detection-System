@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 import numpy as np
+import cv2
 
 class DatasetLoader:
     def __init__(self, drive_root, class_names=None, video_extensions=None):
