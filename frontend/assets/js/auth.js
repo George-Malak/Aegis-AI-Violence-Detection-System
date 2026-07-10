@@ -10,6 +10,11 @@ const AgesisAuth = {
         if (loginForm) {
             loginForm.addEventListener("submit", (e) => this.handleLogin(e));
         }
+
+        const signupForm = document.getElementById("signup-form");
+        if (signupForm) {
+            signupForm.addEventListener("submit", (e) => this.handleSignup(e));
+        }
     },
 
     async handleLogin(e) {
@@ -81,6 +86,81 @@ const AgesisAuth = {
     logout() {
         localStorage.removeItem(this.tokenKey);
         window.location.href = "login.html";
+    },
+
+    async handleSignup(e) {
+        e.preventDefault();
+        const form = e.target;
+        const firstName = document.getElementById("first-name");
+        const lastName = document.getElementById("last-name");
+        const email = document.getElementById("email");
+        const organization = document.getElementById("organization");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm-password");
+        const terms = document.getElementById("terms");
+        const submitButton = document.getElementById("signup-button");
+        const formAlert = document.getElementById("signup-form-alert");
+
+        AgesisValidation.clearAllErrors(form);
+        let isValid = true;
+
+        // Validate Names
+        if (!AgesisValidation.isRequired(firstName.value)) {
+            AgesisValidation.showError(firstName, "First name is required.");
+            isValid = false;
+        }
+        if (!AgesisValidation.isRequired(lastName.value)) {
+            AgesisValidation.showError(lastName, "Last name is required.");
+            isValid = false;
+        }
+
+        // Validate Email & Org
+        if (!AgesisValidation.isValidEmail(email.value)) {
+            AgesisValidation.showError(email, "A valid company email is required.");
+            isValid = false;
+        }
+        if (!AgesisValidation.isRequired(organization.value)) {
+            AgesisValidation.showError(organization, "Organization name is required.");
+            isValid = false;
+        }
+
+        // Validate Passwords
+        if (!AgesisValidation.isValidPassword(password.value, 8)) {
+            AgesisValidation.showError(password, "Password must be at least 8 characters.");
+            isValid = false;
+        } else if (!AgesisValidation.isPasswordMatch(password.value, confirmPassword.value)) {
+            AgesisValidation.showError(confirmPassword, "Passwords do not match.");
+            isValid = false;
+        }
+
+        // Validate Terms
+        if (!terms.checked) {
+            const termsError = terms.parentElement.parentElement.querySelector(".form-error");
+            termsError.textContent = "You must agree to the terms.";
+            termsError.classList.add("visible");
+            isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Simulate API Call
+        submitButton.classList.add("btn-loading");
+        submitButton.innerHTML = '<span style="visibility: hidden;">Create Account</span>';
+        submitButton.disabled = true;
+
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+
+            const fakeToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.simulatedtoken";
+            this.saveToken(fakeToken);
+            window.location.href = "dashboard.html";
+        } catch (error) {
+            formAlert.textContent = error.message || "Failed to create account. Please try again.";
+            formAlert.classList.add("visible");
+            submitButton.classList.remove("btn-loading");
+            submitButton.innerHTML = "Create Account";
+            submitButton.disabled = false;
+        }
     },
 };
 

@@ -134,3 +134,17 @@
         padding: var(--space-6);
     }
 }
+
+/* --- Auth Form Grid (For Signup Names) --- */
+.auth-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-4);
+}
+
+/* Responsive: Stack names on very small mobile screens */
+@media (max-width: 480px) {
+    .auth-form-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -81,13 +81,14 @@ const AgesisApp = {
 
         switch (page) {
             case "login":
+            case "signup":
                 if (typeof AgesisAuth !== "undefined") AgesisAuth.init();
                 break;
             case "dashboard":
                 if (typeof AgesisDashboard !== "undefined") AgesisDashboard.init();
                 break;
             case "profile":
-                // Future: AgesisProfile.init();
+                // Future -> AgesisProfile.init();
                 break;
         }
     },
