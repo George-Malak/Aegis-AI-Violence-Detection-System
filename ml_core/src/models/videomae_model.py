@@ -40,10 +40,8 @@ class VideoMAEClassifier(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Transforms input (B, F, H, W, C) to VideoMAE format (B, C, F, H, W)."""
-        # Step 1: Shift to standard PyTorch layout (B, F, C, H, W)
         x = x.permute(0, 1, 4, 2, 3)
-        # Step 2: Shift to VideoMAE spatio-temporal tracking layout (B, C, F, H, W)
-        x = x.permute(0, 2, 1, 3, 4)
+        
         
         outputs = self.backbone(x)
         pooled_output = outputs.last_hidden_state.mean(dim=1)
