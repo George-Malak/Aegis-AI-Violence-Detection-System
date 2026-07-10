@@ -1,7 +1,7 @@
 from pathlib import Path
 import torch
 import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 import numpy as np
 
 class DatasetLoader:
@@ -58,21 +58,72 @@ class DatasetLoader:
     
 
 class OnTheFlyVideoDataset(Dataset):
-    def __init__(self, manifest_list, preprocessor_instance):
+    """Bridges your custom DatasetLoader manifest with PyTorch DataLoader execution loops."""
+
+    def __init__(self, manifest_list: list, preprocessor_instance, class_to_idx: dict, target_frames: int = 16):
         self.samples = manifest_list
         self.preprocessor = preprocessor_instance
+        self.class_to_idx = class_to_idx
+        self.target_frames = target_frames
 
     def __len__(self) -> int:
         return len(self.samples)
 
-    def __getitem__(self, idx: int):
-        video_data = self.samples[idx]
-        video_path = video_data["video_path"]
-        label = video_data["label_idx"]   
+    def _sample_adaptive_indices(self, total_frames: int, is_segmented: bool) -> np.ndarray:
+        """Determines uniform sampling vs dense sampling based on the video duration pattern."""
+        if is_segmented:
+            # For 15-second segments (Abuse), capture tight dense localized action windows
+            stride = 2
+            required_window = self.target_frames * stride
+            if total_frames > required_window:
+                start_idx = np.random.randint(0, total_frames - required_window)
+                return np.arange(start_idx, start_idx + required_window, stride)[:self.target_frames]
         
-        video_tensor = self.preprocessor.preprocess(video_path)
+        # Standard uniform spread sampling across full-length tracks
+        return np.linspace(0, total_frames - 1, num=self.target_frames, dtype=int)
+
+    def __getitem__(self, idx: int) -> tuple:
+        sample = self.samples[idx]
+        video_path = sample["video_path"]
+        class_name = sample["class_name"]
+        label_idx = self.class_to_idx[class_name]
         
-        if video_tensor is None:
-            video_tensor = np.zeros((16, 224, 224, 3), dtype=np.float32)
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            return torch.zeros((self.target_frames, 224, 224, 3), dtype=torch.float32), torch.tensor(label_idx, dtype=torch.long)
             
-        return torch.from_numpy(video_tensor), torch.tensor(label, dtype=torch.long)
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        if total_frames == 0:
+            cap.release()
+            return torch.zeros((self.target_frames, 224, 224, 3), dtype=torch.float32), torch.tensor(label_idx, dtype=torch.long)
+
+        # Apply specific window logic if tracking the pre-segmented Abuse clips
+        is_abuse_clip = (class_name == "Abuse")
+        target_indices = self._sample_adaptive_indices(total_frames, is_segmented=is_abuse_clip)
+        
+        video_sequence = []
+        current_idx = 0
+        
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+                
+            if current_idx in target_indices:
+                occurrences = np.sum(target_indices == current_idx)
+                for _ in range(occurrences):
+                    processed = self.preprocessor.process_single_frame(frame)
+                    video_sequence.append(processed)
+                    
+            current_idx += 1
+            if len(video_sequence) >= self.target_frames:
+                break
+                
+        cap.release()
+        
+        # Patch structural array mismatch if frames fail to capture
+        while len(video_sequence) < self.target_frames:
+            video_sequence.append(np.zeros((224, 224, 3), dtype=np.float32))
+            
+        video_tensor = np.array(video_sequence, dtype=np.float32)[:self.target_frames]
+        return torch.from_numpy(video_tensor), torch.tensor(label_idx, dtype=torch.long)
