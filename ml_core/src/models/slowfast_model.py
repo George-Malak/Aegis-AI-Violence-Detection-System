@@ -1,32 +1,26 @@
 import tensorflow as tf
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Conv3D, MaxPooling3D, Concatenate, BatchNormalization, Activation
+import tensorflow_hub as hub
 
 class ViolenceDetectorSlowFast:
-    def __init__(self, input_shape=(32, 64, 64, 3), num_classes=14):
-        self.input_shape = input_shape
+    def __init__(self, num_classes=14):
         self.num_classes = num_classes
+        self.model_url = "https://tfhub.dev/deepmind/slowfast-r50/kinetics400/1"
         self.model = self.build_model()
         
     def build_model(self):
-        inputs = Input(shape=self.input_shape)
+        slowfast_layer = hub.KerasLayer(self.model_url, trainable=False)
         
-        slow_path = tf.gather(inputs, tf.range(0, self.input_shape[0], 4), axis=1)
+        inputs = tf.keras.Input(shape=(None, 64, 64, 3)) 
         
-        fast_path = inputs
+        x = slowfast_layer(inputs)
         
-        slow_conv1 = Conv3D(16, (3, 3, 3), padding='same')(slow_path)
-        fast_conv1 = Conv3D(4, (3, 3, 3), padding='same')(fast_path)
+        outputs = tf.keras.layers.Dense(self.num_classes, activation='softmax')(x)
         
-        fast_to_slow = MaxPooling3D((4, 1, 1))(fast_conv1) 
-        merged = Concatenate(axis=-1)([slow_conv1, fast_to_slow])
+        model = tf.keras.Model(inputs=inputs, outputs=outputs)
         
-        x = Activation('relu')(merged)
-        x = MaxPooling3D((1, 2, 2))(x)
-        
-        x = tf.keras.layers.GlobalAveragePooling3D()(x)
-        output = tf.keras.layers.Dense(self.num_classes, activation='softmax')(x)
-        
-        model = Model(inputs=inputs, outputs=output)
-        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+        model.compile(
+            optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+            loss='categorical_crossentropy',
+            metrics=['accuracy']
+        )
         return model
