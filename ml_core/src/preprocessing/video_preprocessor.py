@@ -220,9 +220,9 @@ class VideoPreprocessor:
         
         # Ensure we strictly return the expected shape
         video_tensor = np.array(video_sequence)[:self.target_frames]
-        self.visualize_frame_sequence(video_tensor)  # Visualize the processed frames
-        self.plot_pixel_distribution(video_tensor)  # Show pixel distribution for debugging
-        self.plot_motion_energy(video_tensor)  # Show motion energy for debugging
+        # self.visualize_frame_sequence(video_tensor)  # Visualize the processed frames
+        # self.plot_pixel_distribution(video_tensor)  # Show pixel distribution for debugging
+        # self.plot_motion_energy(video_tensor)  # Show motion energy for debugging
         return video_tensor
 
 """"
@@ -232,7 +232,7 @@ if __name__ == "__main__":
     sample_path = r"D:\downloads\Movies\Robbery150_x264.mp4"
     if os.path.exists(sample_path):
         tensor = preprocessor.preprocess(sample_path)
-        print(f" Done! Tensor shape: {tensor.shape}") # الناتج المتوقع: (16, 224, 224, 3)
+        print(f" Done! Tensor shape: {tensor.shape}") # (16, 224, 224, 3)
     else:
         print(f"Video file not found!")
 """
