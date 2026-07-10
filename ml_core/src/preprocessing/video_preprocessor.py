@@ -157,7 +157,7 @@ class VideoPreprocessor:
     def preprocess(self, video_path):
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
-            print(f"❌ Error: Cannot open video {video_path}")
+            print(f"Error: Cannot open video {video_path}")
             return None
 
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -199,7 +199,7 @@ class VideoPreprocessor:
                     # Convert to YCrCb to enhance luminosity channel without messing up colors
                     ycrcb = cv2.cvtColor(canvas, cv2.COLOR_BGR2YCrCb)
                     ycrcb[:, :, 0] = self.clahe.apply(ycrcb[:, :, 0])
-                    enhanced = cv2.cvtColor(ycrcb, cv2.YCrCb2RGB) # Switch to RGB for Deep Learning
+                    enhanced = cv2.cvtColor(ycrcb, cv2.COLOR_YCrCb2RGB) # Switch to RGB for Deep Learning
                     
                     # Mild Bilateral Filter: Denoises low-quality video but *keeps sharp edges* of moving bodies
                     filtered = cv2.bilateralFilter(enhanced, d=5, sigmaColor=35, sigmaSpace=35)
