@@ -1,5 +1,8 @@
 from pathlib import Path
-
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+import numpy as np
 
 class DatasetLoader:
     def __init__(self, drive_root, class_names=None, video_extensions=None):
@@ -52,3 +55,24 @@ class DatasetLoader:
 
     def load_dataset(self):
         return self.load_manifest()
+    
+
+class OnTheFlyVideoDataset(Dataset):
+    def __init__(self, manifest_list, preprocessor_instance):
+        self.samples = manifest_list
+        self.preprocessor = preprocessor_instance
+
+    def __len__(self) -> int:
+        return len(self.samples)
+
+    def __getitem__(self, idx: int):
+        video_data = self.samples[idx]
+        video_path = video_data["video_path"]
+        label = video_data["label_idx"]   
+        
+        video_tensor = self.preprocessor.preprocess(video_path)
+        
+        if video_tensor is None:
+            video_tensor = np.zeros((16, 224, 224, 3), dtype=np.float32)
+            
+        return torch.from_numpy(video_tensor), torch.tensor(label, dtype=torch.long)
